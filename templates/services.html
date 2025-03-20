@@ -1,0 +1,278 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShiquoHiiiStyle - Our Services</title>
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #800080; /* Purple */
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-img {
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .cart-icon {
+            position: relative;
+            color: #fff;
+        }
+
+        #cart-count {
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 5px;
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            font-size: 12px;
+        }
+
+        .hero {
+            background-color: #E6E6FA;
+            color: #000;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+
+
+        /* Service Section Styles */
+        .service-section {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .service {
+            display: inline-block;
+            margin: 1rem;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            height: 250px; /* Adjusted height for uniformity */
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .service img {
+            max-width: 60px; /* Make images responsive */
+            height: 60px; /* Maintain aspect ratio */
+            margin-bottom: 10px; /* Space between image and text */
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: black;
+            color: white;
+            padding: 60px 0 20px;
+            text-align: center; /* Center footer text */
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0; /* Remove default padding */
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 2px solid rgb(255, 255, 255);
+        }
+
+        .social-icons {
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #ff5722;
+        }
+
+                /* Responsive Styles */
+        @media (max-width: 600px) {
+            .service {
+                width: 90%; /* Full width on small screens */
+                margin: 10px auto; /* Center the service cards */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="{% url 'admin_login' %}"><img src="{% static 'assets/img/logoo.jpg' %}" class="logo-img"></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'services' %}">Our Services</a></li>
+                <li><a href="{% url 'clothing' %}">Clothing</a></li>
+                <li><a href="{% url 'electronics' %}">Electronics</a></li>
+                <li><a href="{% url 'contact' %}">Contact Us</a></li>
+            </ul>
+        </nav>
+        <a href="{% url 'cart_view' %}" class="cart-icon">🛒 My Cart<span id="cart-count">0</span></a>
+    </header>
+
+    <div class="hero">
+        <h1>Our Services</h1>
+        <p>At Shiquohiiistyle, we offer a range of services to enhance your shopping experience.</p>
+    </div>
+
+    <div class="service-section">
+        <h2>Clothing Services</h2>
+        <div class="service">
+            <img src="{% static 'assets/img/fashioncosultation.png' %}" alt="Fashion Consultation">
+            <h3>Fashion Consultation</h3>
+            <p>Our fashion consultants are here to assist you in selecting the perfect outfits for any occasion, helping you express your unique style.</p>
+        </div>
+        <div class="service">
+            <img src="{% static 'assets/img/customtailoring.png' %}" alt="Custom Tailoring">
+            <h3>Custom Tailoring</h3>
+            <p>We offer custom tailoring services to ensure your clothing fits. Our expert tailors will help you achieve the look you desire.</p>
+        </div>
+        <div class="service">
+            <img src="{% static 'assets/img/alteration.png' %}" alt="Alterations">
+            <h3>Alterations</h3>
+            <p>We provide alteration services to ensure your clothing fits just right, making adjustments to meet your specific needs.</p>
+        </div>
+        <div class="service">
+            <img src="{% static 'assets/img/free delivery.png' %}" alt="Free Delivery">
+            <h3>Free Delivery</h3>
+            <p>Enjoy free delivery on all clothing orders! We ensure your purchases arrive at your doorstep quickly and safely.</p>
+        </div>
+    </div>
+
+    <div class="service-section">
+        <h2>Electronics Services</h2>
+        <div class="service">
+            <img src="{% static 'assets/img/Sales of Electronic.png' %}" alt="Sales of Electronics">
+            <h3>Sales of Electronics</h3>
+            <p>We offer a wide range of electronics, from the latest gadgets to essential appliances, all at competitive prices.</p>
+        </div>
+        <div class="service">
+            <img src="{% static 'assets/img/Repair Services.png' %}" alt="Repair Services">
+            <h3>Repair Services</h3>
+            <p>Our skilled technicians provide reliable repair services for all your electronic devices, ensuring they function like new.</p>
+        </div>
+        <div class="service">
+            <img src="{% static 'assets/img/Installation Services.png' %}" alt="Installation Services">
+            <h3>Installation Services</h3>
+            <p>We offer professional installation services for your new electronics, ensuring everything is set up correctly and efficiently.</p>
+        </div>
+        <div class="service">
+            <img src="{% static 'assets/img/free delivery.png' %}" alt="Free Delivery">
+            <h3>Free Delivery</h3>
+            <p>Enjoy free delivery on all electronics purchases! We make sure your items reach you quickly and securely.</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>PHYSICAL LOCATION</h4>
+                    <p>RNG Plaza, 3rd Floor,                    Ronald Ngala Street, Nairobi</p>
+                    <p>Viking House, 1st Floor, Westlands, Nairobi</p>
+                    <p>Beaver House, 1st Floor, Tom Mboya Street, Nairobi</p>
+                </div>
+                <div class="footer-section">
+                    <h4>QUICK LINKS</h4>
+                    <ul>
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'services' %}">Our Services</a></li>
+                        <li><a href="{% url 'clothing' %}">Clothing</a></li>
+                        <li><a href="{% url 'electronics' %}">Electronics</a></li>
+                        <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>CONTACT US</h4>
+                    <ul>
+                        <li><a href="mailto:shikohiiistyle@gmail.com">shikohiiistyle@gmail.com</a></li>
+                        <li><a href="tel:+254100153924">+254 100153924</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>FOLLOW US ON SOCIAL MEDIA</h4>
+                    <div class="social-icons">
+                        <a href="https://wa.me/+254100153924" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/share/1EHiXjXpNA/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/shiquo_hiii_style?igsh=amtxMTVqZTdxeG8y" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://twitter.com/yourprofile" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/yourprofile" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SHIQUO HII STYLE. All Rights Reserved.</p>
+                <p>Designed by OneTech Solutions</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

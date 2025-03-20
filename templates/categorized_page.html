@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorized Products</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9; /* Light background color */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px; /* Space below the main heading */
+        }
+
+        h2 {
+            margin-top: 30px; /* Space above category headings */
+            color: #333; /* Darker color for category headings */
+        }
+
+        .product {
+            border: 1px solid #ccc; /* Light border around products */
+            border-radius: 5px; /* Rounded corners */
+            padding: 15px;
+            margin: 10px 0; /* Space between products */
+            background-color: #fff; /* White background for product cards */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            text-align: center; /* Center text in product cards */
+        }
+
+        img {
+            max-width: 100%; /* Responsive image */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 5px; /* Rounded corners for images */
+        }
+
+        p {
+            font-size: 1.1em; /* Slightly larger font for price */
+            color: #555; /* Darker color for price text */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px; /* Reduce padding on smaller screens */
+            }
+            h1 {
+                font-size: 1.5em; /* Adjust heading size for mobile */
+            }
+            h2 {
+                font-size: 1.3em; /* Adjust category heading size for mobile */
+            }
+            .product {
+                padding: 10px; /* Reduce padding in product cards */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Products by Category</h1>
+    {% for category in categories %}
+        <h2>{{ category.name }}</h2>
+        {% for product in category.product_set.all %}
+            <div class="product">
+                <h3>{{ product.name }}</h3>
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                <p>Price: ${{ product.price }}</p>
+            </div>
+        {% endfor %}
+    {% endfor %}
+</body>
+</html>

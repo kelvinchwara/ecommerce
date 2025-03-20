@@ -1,0 +1,11 @@
+<!-- product_confirm_delete.html -->
+
+
+
+  <h1>Confirm delete</h1>
+  <p>Are you sure you want to delete "{{ object }}"?</p>
+  <form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Confirm">
+  </form>
+  <a href="{% url 'product-list' %}">Cancel</a>

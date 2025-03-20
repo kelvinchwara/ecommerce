@@ -1,0 +1,273 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Welcome to Shiquo Hii Style - Your one-stop shop for the latest fashion.">
+    <meta name="keywords" content="fashion, shopping, online store, Shiquo Hii Style">
+    <title>Welcome to Shiquo Hii Style</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #800080;
+            padding: 10px 20px;
+            color: white;
+        }
+        .logo img {
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            color: #333;
+            padding: 10px 20px;
+            margin-bottom: 5px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 0 auto;
+            padding: 0;
+            list-style: none;
+        }
+        .product {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 15px;
+            text-align: center;
+            width: 200px;
+            transition: transform 0.2s ease-in-out;
+        }
+        .product img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .product h3 {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #333;
+        }
+        .product p {
+            font-size: 16px;
+            color: #666;
+        }
+        .product .cta-button, .product .quick-buy, .product .delete-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.2s ease-in-out;
+        }
+        .product .cta-button {
+            background-color: #007bff;
+        }
+        .product .quick-buy {
+            background-color: #007bff;
+        }
+        .product .delete-button {
+            background-color: #ff0000;
+        }
+        .product .cta-button:hover, .product .quick-buy:hover {
+            background-color: #0056b3;
+        }
+        .product .delete-button:hover {
+            background-color: #cc0000;
+        }
+        .product:hover {
+            transform: scale(1.05);
+        }
+        table {
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 90%; /* Make table responsive */
+            max-width: 1200px; /* Limit max width */
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #800080;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        @media (max-width: 768px) {
+            th, td {
+                font-size: 14px;
+                padding: 8px;
+            }
+            .product {
+                width: 45%; /* Adjust product width for smaller screens */
+            }
+        }
+        @media (max-width: 480px) {
+            th, td {
+                font-size: 12px;
+                padding: 6px;
+            }
+            .product {
+                width: 90%; /* Full width for mobile */
+            }
+            header {
+                flex-direction: column; /* Stack header items */
+                align-items: flex-start; /* Align items to the start */
+            }
+            nav ul {
+                flex-direction: column; /* Stack navigation items */
+                align-items: flex-start; /* Align items to the start */
+            }
+            nav ul li {
+                margin: 5px 0; /* Adjust margin for stacked items */
+            }
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+        }
+        form p {
+            margin-bottom: 15px;
+        }
+        form label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        form input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        form .btn-primary {
+            display: inline-block;
+            padding: 10px 15px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #ff5722;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function quickBuy(productName, productPrice) {
+            alert(`You have selected ${productName} for Ksh ${productPrice}.`);
+            // Here you can add more functionality, like adding to cart or redirecting to checkout.
+        }
+
+        function confirmDelete() {
+            return confirm('Are you sure you want to delete this item?');
+        }
+
+        function validateUploadForm() {
+            const fileInput = document.querySelector('input[type="file"]');
+            if (!fileInput.value) {
+                alert('Please select a file to upload.');
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{% static 'assets/img/logoo.jpg' %}" alt="ShiquoHiiiStyle Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'manage_products' %}">Products</a></li>
+                <li><a href="{% url 'customer_orders' %}">Customer Orders</a></li>
+                <li><a href="{% url 'contact_messages' %}">Contact Messages</a></li>
+                <li><a href="{% url 'upload_product_images' %}">Upload Images</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Customer Orders</h1>
+    <table border="1">
+        <tr>
+            <th>Customer Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Order Date</th>
+            <th>Items</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        {% for order in orders %}
+            {% for order_item in order.orderitem_set.all %}
+                <tr>
+                    <td>{{ order.name }}</td>
+                    <td>{{ order.email }}</td>
+                    <td>{{ order.address }}</td>
+                    <td>{{ order.created_at }}</td>
+                    <td>{{ order_item.product.name }}</td>
+                    <td>{{ order_item.quantity }}</td>
+                    <td>{{ order_item.price_at_order }}</td>
+                    <td>
+                        <form action="{% url 'delete_order' order.id %}" method="post" onsubmit="return confirmDelete();">
+                            {% csrf_token %}
+                            <button type="submit" class="btn-primary">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endfor %}
+    </table>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9; /* Light background color */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px; /* Space below the main heading */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse; /* Remove space between borders */
+            margin-bottom: 20px; /* Space below the table */
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left; /* Align text to the left */
+            border: 1px solid #ccc; /* Light border for table cells */
+        }
+
+        th {
+            background-color: #800080; /* Bootstrap primary color */
+            color: white; /* White text for headers */
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px; /* Space above total amount */
+        }
+
+        a {
+            display: block; /* Make the link a block element */
+            text-align: center; /* Center the link */
+            margin: 20px auto; /* Space above and below the link */
+            padding: 10px 20px; /* Padding for the link */
+            background-color: #ff5722; /* Bootstrap success color */
+            color: white; /* White text for the link */
+            text-decoration: none; /* Remove underline */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px; /* Reduce padding on smaller screens */
+            }
+            h1 {
+                font-size: 1.5em; /* Adjust heading size for mobile */
+            }
+            table {
+                font-size: 0.9em; /* Smaller font size for table on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Cart</h1>
+
+    <!-- Display messages -->
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li style="color: red;">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if cart_items %}
+        <table>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+            {% for item in cart_items %}
+            <tr>
+                <td>{{ item.product.name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>ksh {{ item.product.price|floatformat:2 }}</td>
+                <td>ksh {{ item.product.price|floatformat:2 }} x {{ item.quantity }} </td> <!-- Calculate total for this item -->
+            </tr>
+            {% endfor %}
+        </table>
+        <h2>Total Amount: ksh {{ total_price|floatformat:2 }}</h2>  <!-- Display total amount -->
+        <a href="{% url 'checkout' %}">Checkout</a>
+    {% else %}
+        <h2>Your cart is empty. Please add items to your cart to proceed.</h2>
+        <a href="{% url 'home' %}">Continue Shopping</a>
+    {% endif %}
+</body>
+</html>

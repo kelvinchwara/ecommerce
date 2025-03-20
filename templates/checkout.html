@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9; /* Light background color */
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0; /* Space above and below the heading */
+        }
+
+        form {
+            width: 90%; /* Full width on mobile */
+            max-width: 500px; /* Max width for larger screens */
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #fff; /* White background for the form */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            margin: 20px 0; /* Space above and below the heading */
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff5722;/* Bootstrap primary color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em; /* Adjust heading size for mobile */
+            }
+            button {
+                width: 100%; /* Full width button on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Checkout</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <table>
+            <tr>
+                <td>{{ form.full_name.label_tag }} {{ form.full_name }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.email.label_tag }} {{ form.email }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.address.label_tag }} {{ form.address }}</td>
+            </tr>
+        </table>
+
+        <h2>Your Cart Items:</h2>
+        <ul>
+            {% for item in cart_items %}
+            <li>{{ item.product.name }} – Quantity: {{ item.quantity }}</li>
+            {% endfor %}
+        </ul>
+
+        <div style="text-align: center;">
+            <button type="submit">Place Order</button>
+        </div>
+    </form>
+
+</body>
+</html>

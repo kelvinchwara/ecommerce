@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Success</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh; /* Full height of the viewport */
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            background-color: #f9f9f9; /* Light background color */
+        }
+        .container {
+            text-align: center; /* Center text */
+            padding: 20px;
+            border: 1px solid #ddd; /* Light border */
+            border-radius: 8px; /* Rounded corners */
+            background-color: #fff; /* White background for the box */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            max-width: 90%; /* Responsive max width */
+            width: 400px; /* Fixed width for larger screens */
+        }
+        h1 {
+            color: #4CAF50; /* Green color for the heading */
+            margin-bottom: 10px; /* Space below the heading */
+        }
+        p {
+            font-size: 1.2em;
+            margin: 10px 0; /* Space above and below paragraphs */
+        }
+        a {
+            text-decoration: none;
+            color: #007BFF; /* Bootstrap primary color */
+            font-weight: bold; /* Bold link */
+        }
+        a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            body {
+                font-size: 14px; /* Adjust font size for smaller screens */
+            }
+            .container {
+                padding: 10px; /* Reduce padding on smaller screens */
+            }
+            h1 {
+                font-size: 1.5em; /* Adjust heading size */
+            }
+            p {
+                font-size: 1em; /* Adjust paragraph size */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Thank you for your order!</h1>
+        <p>Your order has been successfully placed and is currently pending.</p>
+        <p><a href="{% url 'home' %}">Return to Home</a></p>
+    </div>
+</body>
+</html>
