@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 
 import environ
+from django.contrib import staticfiles
 
 # Initialize environment variables
 env = environ.Env()
@@ -128,9 +129,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Directory where static files will be collected
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),  # If you have a global static directory
+    os.path.join(BASE_DIR, 'static'),  # Global static directory
 ]
 
 # Default primary key field type
