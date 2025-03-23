@@ -94,13 +94,14 @@ WSGI_APPLICATION = 'shiquoweb.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': env("DB_NAME", default='shiquo'),  # Your database name
-        'USER': env("DB_USER", default='shiquo'),   # Your MySQL user
-        'PASSWORD': env("DB_PASSWORD"),  # Your MySQL password
-        'HOST': env("DB_HOST", default='localhost'),  # Host for the database
-        'PORT': env("DB_PORT", default='3306'),       # Default MySQL port
+        'NAME': env("DB_NAME"),
+        'USER': env("DB_USER"),
+        'PASSWORD': env("DB_PASSWORD"),
+        'HOST': env("DB_HOST"),
+        'PORT': env("DB_PORT"),
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
