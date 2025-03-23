@@ -35,7 +35,7 @@ SECRET_KEY = 'django-insecure-^ou#8vjq47)9r8oegz5l)0q-_9ayuq*n$3s_&_wk@uk=6)-#68
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'shiquecommerce.onrender.com']
 
 
 # Application definition
