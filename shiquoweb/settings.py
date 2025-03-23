@@ -93,12 +93,12 @@ WSGI_APPLICATION = 'shiquoweb.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': env("DB_NAME"),
-        'USER': env("DB_USER"),
-        'PASSWORD': env("DB_PASSWORD"),
-        'HOST': env("DB_HOST"),
-        'PORT': env("DB_PORT"),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env("shiquo_postgres"),
+        'USER': env("shiquo_postgres_user"),
+        'PASSWORD': env("GJ9ZXAac3tFry7G79kEl77PQ1yP5e46T"),
+        'HOST': env("dpg-cvfv5qdrie7s73blae4g-a"),
+        'PORT': env("DB_PORT", default='5432'),
     }
 }
 
