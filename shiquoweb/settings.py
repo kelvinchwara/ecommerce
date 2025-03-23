@@ -33,7 +33,7 @@ SECRET_KEY = env("SECRET_KEY", default='django-insecure-^ou#8vjq47)9r8oegz5l)0q-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG", default=True)
 
-ALLOWED_HOSTS = ['localhost', 'shiquecommerce.onrender.com']
+ALLOWED_HOSTS = ['localhost', 'shiquecommerce.onrender.com', '127.0.0.1']
 
 # Application definition
 INSTALLED_APPS = [
@@ -78,14 +78,16 @@ WSGI_APPLICATION = 'shiquoweb.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+# Database
+# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': env("DB_NAME", default='mysql'),  # Your database name
-        'USER': env("DB_USER", default='root'),   # Default XAMPP MySQL user
-        'PASSWORD': env("DB_PASSWORD", default=''),  # Default XAMPP MySQL password (usually empty)
-        'HOST': env("DB_HOST", default='localhost'),
-        'PORT': env("DB_PORT", default='3306'),   # Default MySQL port
+        'NAME': env("DB_NAME", default='shiquo'),  # Your database name
+        'USER': env("DB_USER", default='shiquo'),   # Your MySQL user
+        'PASSWORD': env("DB_PASSWORD", default='shiquo254'),  # Your MySQL password
+        'HOST': env("DB_HOST", default='localhost'),  # Host for the database
+        'PORT': env("DB_PORT", default='3306'),       # Default MySQL port
     }
 }
 
