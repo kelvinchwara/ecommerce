@@ -19,7 +19,12 @@ env = environ.Env()
 environ.Env.read_env()  # Read .env file, if it exists
 
 # Now you can access your environment variables
-SECRET_KEY = env("SECRET_KEY")
+SECRET_KEY = env("SECRET_KEY")  # No default value
+
+# Ensure to handle the case where SECRET_KEY is not set
+if not SECRET_KEY:
+    raise ValueError("The SECRET_KEY environment variable is not set.")
+
 PASS_KEY = env("PASS_KEY")  # Ensure this line is present
 DEBUG = env("DEBUG", default=False)
 DB_NAME = env("DB_NAME")
@@ -34,7 +39,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("SECRET_KEY", default='django-insecure-^ou#8vjq47)9r8oegz5l)0q-_9ayuq*n$3s_&_wk@uk=6)-#68')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG", default=True)
@@ -91,7 +96,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': env("DB_NAME", default='shiquo'),  # Your database name
         'USER': env("DB_USER", default='shiquo'),   # Your MySQL user
-        'PASSWORD': env("DB_PASSWORD", default='shiquo254'),  # Your MySQL password
+        'PASSWORD': env("DB_PASSWORD"),  # Your MySQL password
         'HOST': env("DB_HOST", default='localhost'),  # Host for the database
         'PORT': env("DB_PORT", default='3306'),       # Default MySQL port
     }
