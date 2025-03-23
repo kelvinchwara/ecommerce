@@ -19,8 +19,14 @@ env = environ.Env()
 environ.Env.read_env()  # Read .env file, if it exists
 
 # Now you can access your environment variables
-PASS_KEY = env("pass_key")
-
+SECRET_KEY = env("SECRET_KEY")
+PASS_KEY = env("PASS_KEY")  # Ensure this line is present
+DEBUG = env("DEBUG", default=False)
+DB_NAME = env("DB_NAME")
+DB_USER = env("DB_USER")
+DB_PASSWORD = env("DB_PASSWORD")
+DB_HOST = env("DB_HOST")
+DB_PORT = env("DB_PORT")
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
