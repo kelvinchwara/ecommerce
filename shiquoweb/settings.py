@@ -12,28 +12,17 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 import os
 from pathlib import Path
-import environ
-
-# Initialize environment variables
-env = environ.Env()
-environ.Env.read_env()  # Read .env file, if it exists
-
-# Now you can access your environment variables
-SECRET_KEY = env("SECRET_KEY")  # No default value
-
-# Ensure to handle the case where SECRET_KEY is not set
-if not SECRET_KEY:
-    raise ValueError("The SECRET_KEY environment variable is not set.")
-
-PASS_KEY = env("PASS_KEY")  # Ensure this line is present
-DEBUG = env("DEBUG", default=False)
-DB_NAME = env("DB_NAME")
-DB_USER = env("DB_USER")
-DB_PASSWORD = env("DB_PASSWORD")
-DB_HOST = env("DB_HOST")
-DB_PORT = env("DB_PORT")
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+# Initialize environment variables
+
+# Now you can access your environment variables
+SECRET_KEY = 'django-insecure-2*o=0sj4q*!093qn0adqj-x+g(=zx5!&(owwavhfmmhyot2#3i'
+
+
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -42,9 +31,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env("DEBUG", default=True)
+DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'shiquecommerce.onrender.com', '127.0.0.1']
+ALLOWED_HOSTS = [ 'shiquecommerce.onrender.com', '127.0.0.1']
 
 # Application definition
 INSTALLED_APPS = [
@@ -93,12 +82,8 @@ WSGI_APPLICATION = 'shiquoweb.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env("shiquo_postgres"),
-        'USER': env("shiquo_postgres_user"),
-        'PASSWORD': env("GJ9ZXAac3tFry7G79kEl77PQ1yP5e46T"),
-        'HOST': env("dpg-cvfv5qdrie7s73blae4g-a"),
-        'PORT': env("DB_PORT", default='5432'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
