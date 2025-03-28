@@ -1,15 +1,5 @@
-              {
-  "version": 2,
-  "builds": [
-    {
-      "src": "shiquoweb/wsgi.py",
-      "use": "@vercel/python"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "shiquoweb/wsgi.py"
-    }
+{
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
   ]
 }
