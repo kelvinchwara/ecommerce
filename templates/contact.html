@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="极width=device-width, initial-scale=1.0">
     <title>ShiquoHiiiStyle - Clothing & Electronics</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"> <!-- Swiper CSS -->
@@ -16,18 +16,33 @@
             background-color: #f4f4f4;
         }
 
+        /* Header Styles */
         header {
             background-color: #800080; /* Purple */
             color: #fff;
             padding: 10px 20px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: space-between; /* Space between logo and cart */
         }
 
         .logo-img {
             height: 50px;
             border-radius: 50%;
+        }
+
+        .hamburger {
+            display: none; /* Hide by default */
+            flex-direction: column;
+            cursor: pointer;
+            margin: 0 auto; /* Center the hamburger menu */
+        }
+
+        .hamburger .line {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 4px 0;
         }
 
         nav ul {
@@ -57,6 +72,28 @@
             font-size: 12px;
         }
 
+        .header-right {
+            margin-left: auto; /* Push cart to the far right */
+        }
+
+        /* Responsive Header */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex; /* Show hamburger menu on small screens */
+            }
+
+            nav ul {
+                display: none; /* Hide nav links on small screens */
+                flex-direction: column;
+                width: 100%;
+            }
+
+            nav ul.active {
+                display: flex; /* Show nav links when hamburger is clicked */
+            }
+        }
+
+        /* Hero Section */
         .hero {
             background-color: #6EA5E7;
             color: white;
@@ -107,18 +144,10 @@
             text-decoration: none;
             transition: color 0.3s ease;
         }
-         .success-message {
-            color: green;
-            margin-bottom: 15px;
-            padding: 10px;
-            border: 1px solid green;
-            border-radius: 5px;
-            background-color: #e8f5e9; /* Light green background */
-        }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 2rem;
+            padding-top极: 2rem;
             border-top: 2px solid rgb(255, 255, 255);
         }
 
@@ -170,8 +199,8 @@
             width: 100%;
             padding: 10px;
             border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size:            14px;
+            border-radius: 极5px;
+            font-size: 14px;
         }
 
         .form-group textarea {
@@ -207,18 +236,6 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        .map-title {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .map-description {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 15px;
-        }
-
         .map {
             width: 100%;
             height: 300px; /* Set a fixed height for the map */
@@ -244,8 +261,13 @@
         <div class="logo">
             <a href="{% url 'admin_login' %}"><img src="{% static 'assets/img/logoo.jpg' %}" class="logo-img"></a>
         </div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
         <nav>
-            <ul>
+            <ul id="nav-menu">
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'services' %}">Our Services</a></li>
                 <li><a href="{% url 'clothing' %}">Clothing</a></li>
@@ -253,7 +275,9 @@
                 <li><a href="{% url 'contact' %}">Contact Us</a></li>
             </ul>
         </nav>
-        <a href="{% url 'cart_view' %}" class="cart-icon">🛒 My Cart<span id="cart-count">0</span></a>
+        <div class="header-right">
+            <a href="{% url 'cart_view' %}" class="cart-icon">🛒 My Cart<span id="cart-count">0</span></a>
+        </div>
     </header>
 
     <h1 style="text-align: center">Our Contact Page</h1>
@@ -279,17 +303,17 @@
 
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="name@example.com" required>
+                    <input type="email" id="email极", name="email" placeholder="name@example.com" required>
                 </div>
 
                 <div class="form-group">
                     <label for="subject">Subject</label>
-                    <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                    <input type="text" id="subject", name="subject", placeholder="Subject" required>
                 </div>
 
                 <div class="form-group">
                     <label for="message">Message</label>
-                    <textarea class="form-control" name="message" id="message" rows="6" placeholder="Message" required></textarea>
+                    <textarea class="form-control", name="message", id="message", rows="6", placeholder="Message" required></textarea>
                 </div>
 
                 <div class="flex-center">
@@ -300,7 +324,7 @@
 
         <div class="map-container">
             <h1 style="text-align: center">Our Location</h1>
-            <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1            !3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" allowfullscreen="" loading="lazy"></iframe>
+            <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </div>
 
@@ -350,22 +374,11 @@
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
-        var mySwiper = new Swiper('.swiper-container', {
-            loop: true, // Enable looping
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true, // Allow clicking on pagination bullets
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            autoplay: {
-                delay: 5000, // Change slide every 5 seconds
-                disableOnInteraction: false, // Continue autoplay after user interactions
-            },
-            speed: 600, // Transition speed
-        });
+        // JavaScript for hamburger menu
+        function toggleMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('active');
+        }
 
         // Hide success message after 3 seconds
         setTimeout(function() {
@@ -374,7 +387,6 @@
                 successMessage.style.display = 'none';
             }
         }, 3000); // 3000 milliseconds = 3 seconds
-
     </script>
 </body>
 </html>

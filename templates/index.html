@@ -163,7 +163,7 @@
         }
 
         .footer-section ul {
-                       list-style: none;
+            list-style: none;
             padding: 0;
         }
 
@@ -198,6 +198,21 @@
             color: #ff5722;
         }
 
+        /* Hamburger Menu Styles */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            margin: 0 auto; /* Center the hamburger menu */
+        }
+
+        .hamburger .line {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 4px 0;
+        }
+
         /* Responsive Styles */
         @media (max-width: 768px) {
             .product {
@@ -205,18 +220,69 @@
             }
 
             header {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            nav ul {
+                display: none;
                 flex-direction: column;
-                align-items: flex-start;
+                width: 100%;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .header-right {
+                margin-left: auto; /* Push cart to the far right */
+            }
+
+            /* Responsive Hero Section */
+            .hero {
+                padding: 50px 20px; /* Reduce padding for smaller screens */
+            }
+
+            .hero h1 {
+                font-size: 1.5rem; /* Smaller heading size for mobile */
+            }
+
+            .hero p {
+                font-size: 0.9rem; /* Smaller paragraph size for mobile */
+            }
+
+            /* Responsive Product List */
+            .product-list {
+                flex-direction: column; /* Stack products vertically */
+                align-items: center;
+            }
+
+            .product {
+                width: 90%; /* Full width for mobile */
+                margin: 10px 0; /* Adjust margin */
+            }
+
+            /* Responsive Footer */
+            .footer-content {
+                grid-template-columns: 1fr; /* Single column for mobile */
+            }
+
+            .footer-section {
+                text-align: center; /* Center align footer content */
             }
         }
 
         @media (max-width: 480px) {
             .product {
-                width: 150px; /* Smaller width for mobile */
+                width: 100%; /* Full width for very small screens */
             }
 
             .hero h1 {
-                font-size: 2rem; /* Smaller heading size for mobile */
+                font-size: 1.2rem; /* Smaller heading size for very small screens */
             }
 
             .cta-button {
@@ -230,8 +296,13 @@
         <div class="logo">
             <a href="{% url 'admin_login' %}"><img src="{% static 'assets/img/logoo.jpg' %}" class="logo-img"></a>
         </div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
         <nav>
-            <ul>
+            <ul id="nav-menu">
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'services' %}">Our Services</a></li>
                 <li><a href="{% url 'clothing' %}">Clothing</a></li>
@@ -257,7 +328,7 @@
                         <p>ksh {{ product.price }}</p>
                         <a href="{% url 'add_to_cart' product.id %}" class="cta-button">Add to Cart</a>
                         <button class="quick-buy" onclick="quickBuy('{{ product.name }}', {{ product.price }})">Quick Buy</button>
-                </div>
+                    </div>
                 {% endif %}
             {% endfor %}
         </div>
@@ -282,7 +353,7 @@
                     <ul>
                         <li><a href="{% url 'home' %}">Home</a></li>
                         <li><a href="{% url 'services' %}">Our Services</a></li>
-                                                <li><a href="{% url 'clothing' %}">Clothing</a></li>
+                        <li><a href="{% url 'clothing' %}">Clothing</a></li>
                         <li><a href="{% url 'electronics' %}">Electronics</a></li>
                         <li><a href="{% url 'contact' %}">Contact Us</a></li>
                     </ul>
@@ -301,7 +372,7 @@
                         <a href="https://www.facebook.com/share/1EHiXjXpNA/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/shiquo_hiii_style?igsh=amtxMTVqZTdxeG8y" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="https://twitter.com/yourprofile" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.linkedin.com/in/yourprofile" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.linkedin.com/in/yourprofile" target="_blank, aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
@@ -311,9 +382,8 @@
             </div>
         </div>
     </footer>
-<script>
+    <script>
         function quickBuy(productName, productPrice) {
-            // Format the message to include only product name and price
             const message = `Hi, I would like to buy the following product:\n\n` +
                             `Product: ${productName}\n` +
                             `Price: ksh ${productPrice}\n\n` +
@@ -328,7 +398,6 @@
         // JavaScript for cart functionality
         let cartCount = 0;
 
-        // Add event listeners to all "Add to Cart" buttons
         const addToCartButtons = document.querySelectorAll('.cta-button');
         addToCartButtons.forEach(button => {
             button.addEventListener('click', () => {
@@ -337,6 +406,12 @@
                 alert(`${button.parentElement.querySelector('h3').innerText} has been added to your cart!`);
             });
         });
+
+        // JavaScript for hamburger menu
+        function toggleMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('active');
+        }
     </script>
 </body>
 </html>

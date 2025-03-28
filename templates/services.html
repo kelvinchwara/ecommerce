@@ -64,8 +64,6 @@
             padding: 100px 20px;
         }
 
-
-
         /* Service Section Styles */
         .service-section {
             text-align: center;
@@ -152,11 +150,82 @@
             color: #ff5722;
         }
 
-                /* Responsive Styles */
-        @media (max-width: 600px) {
+        /* Hamburger Menu Styles */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            margin: 0 auto; /* Center the hamburger menu */
+        }
+
+        .hamburger .line {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 4px 0;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .header-right {
+                margin-left: auto; /* Push cart to the far right */
+            }
+
+            /* Responsive Hero Section */
+            .hero {
+                padding: 50px 20px; /* Reduce padding for smaller screens */
+            }
+
+            .hero h1 {
+                font-size: 1.5rem; /* Smaller heading size for mobile */
+            }
+
+            .hero p {
+                font-size: 0.9rem; /* Smaller paragraph size for mobile */
+            }
+
+            /* Responsive Service Section */
             .service {
-                width: 90%; /* Full width on small screens */
+                width: 90%; /* Full width for mobile */
                 margin: 10px auto; /* Center the service cards */
+            }
+
+            /* Responsive Footer */
+            .footer-content {
+                grid-template-columns: 1fr; /* Single column for mobile */
+            }
+
+            .footer-section {
+                text-align: center; /* Center align footer content */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .service {
+                width: 100%; /* Full width for very small screens */
+            }
+
+            .hero h1 {
+                font-size: 1.2rem; /* Smaller heading size for very small screens */
             }
         }
     </style>
@@ -166,8 +235,13 @@
         <div class="logo">
             <a href="{% url 'admin_login' %}"><img src="{% static 'assets/img/logoo.jpg' %}" class="logo-img"></a>
         </div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
         <nav>
-            <ul>
+            <ul id="nav-menu">
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'services' %}">Our Services</a></li>
                 <li><a href="{% url 'clothing' %}">Clothing</a></li>
@@ -175,7 +249,9 @@
                 <li><a href="{% url 'contact' %}">Contact Us</a></li>
             </ul>
         </nav>
-        <a href="{% url 'cart_view' %}" class="cart-icon">🛒 My Cart<span id="cart-count">0</span></a>
+        <div class="header-right">
+            <a href="{% url 'cart_view' %}" class="cart-icon">🛒 My Cart<span id="cart-count">0</span></a>
+        </div>
     </header>
 
     <div class="hero">
@@ -236,7 +312,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h4>PHYSICAL LOCATION</h4>
-                    <p>RNG Plaza, 3rd Floor,                    Ronald Ngala Street, Nairobi</p>
+                    <p>RNG Plaza, 3rd Floor, Ronald Ngala Street, Nairobi</p>
                     <p>Viking House, 1st Floor, Westlands, Nairobi</p>
                     <p>Beaver House, 1st Floor, Tom Mboya Street, Nairobi</p>
                 </div>
@@ -274,5 +350,13 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // JavaScript for hamburger menu
+        function toggleMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
