@@ -6,9 +6,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Security settings
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'your-default-secret-key')  # Use environment variable for production
-DEBUG = True  # Use environment variable for production
-
-ALLOWED_HOSTS = [ '*']
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
+ALLOWED_HOSTS = ['ecommerce.vercel.app','shiquo-postgres.onrender.com' 'localhost','127.0.0.1']
 
 # Application definition
 INSTALLED_APPS = [
@@ -55,8 +54,12 @@ WSGI_APPLICATION = 'shiquoweb.wsgi.application'
 # Database configuration
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',  # Verify this path.
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'shiquo_postgres',
+        'USER': 'shiquo_postgres_user',
+        'PASSWORD': 'GJ9ZXAac3tFry7G79kEl77PQ1yP5e46T',
+        'HOST': 'dpg-cvfv5qdrie7s73blae4g-a.oregon-postgres.render.com',
+        'PORT': '5432',
     }
 }
 
