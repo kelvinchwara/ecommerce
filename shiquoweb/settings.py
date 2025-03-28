@@ -7,7 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Security settings
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'your-default-secret-key')  # Use environment variable for production
 DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
-ALLOWED_HOSTS = ['ecommerce.vercel.app','shiquo-postgres.onrender.com' 'localhost','127.0.0.1']
+ALLOWED_HOSTS = ['ecommerce.vercel.app','shiquo-postgres.onrender.com' 'localhost','127.0.0.1', 'chwaraecommerce.onrender.com']
 
 # Application definition
 INSTALLED_APPS = [
