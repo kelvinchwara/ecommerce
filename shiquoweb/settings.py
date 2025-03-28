@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-
+import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -52,16 +52,13 @@ TEMPLATES = [
 WSGI_APPLICATION = 'shiquoweb.wsgi.application'
 
 # Database configuration
+
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'shiquo_postgres',
-        'USER': 'shiquo_postgres_user',
-        'PASSWORD': 'GJ9ZXAac3tFry7G79kEl77PQ1yP5e46T',
-        'HOST': 'dpg-cvfv5qdrie7s73blae4g-a.oregon-postgres.render.com',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
 }
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
